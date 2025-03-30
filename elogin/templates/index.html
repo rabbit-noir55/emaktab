@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eMaktab | eMaktab ga kirish</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      background-color: #F4F4F4;
+    }
+    .main-header {
+      background-color: #fff;
+      max-width: 90%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .main-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .links .link {
+      padding: 5px;
+      color: gray;
+      text-decoration: none;
+    }
+    .navbar {
+      background: linear-gradient(#354694, #262967);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+    .no-reg a, .e-text {
+      color: #fff;
+    }
+    .flex-box {
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    strong {
+      display: block;
+      margin: 5px 0;
+    }
+    input {
+      height: 40px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #000;
+      padding: 10px;
+    }
+    .btn button {
+      background: linear-gradient(#b0ce90, #7fbf44);
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      margin-top: 20px;
+      width: 10%;
+      cursor: pointer;
+    }
+    .btn button:hover {
+      background: linear-gradient(#7fbf44, #5d9f30);
+    }
+    @media (max-width: 768px) {
+      .main-navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+      .links {
+        justify-content: center;
+      }
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+      .flex-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+{% if messages %}
+<script>
+	{% for message in messages %}
+	alert(" {{ message }} ");
+	{% endfor %}
+</script>
+{% endif %}
+
+<header class="main-header">
+  <nav class="main-navbar">
+    <div class="logo">
+      <img src="https://static.emaktab.uz/img/logotypes/uzlogotype.png" width="150">
+    </div>
+    <div class="links">
+      <a href="#" class="link">tashkilot</a>
+      <a href="#" class="link">imkoniyatlar</a>
+      <a href="#" class="link">hamkorlarga</a>
+      <a href="#" class="link">yordam</a>
+    </div>
+  </nav>
+</header>
+
+<section class="main-section">
+  <nav class="navbar">
+    <div class="e-text">
+      <h2>Kirish eMaktab</h2>
+    </div>
+    <div class="no-reg">
+      <a href="#">Tizimda ro'yxatdan o'tmaganmisiz?</a>
+    </div>
+  </nav>
+
+  <form class="flex-box" method="POST">
+    {% csrf_token %}
+    <div class="login">
+      <strong>Login</strong>
+      <input type="text" name="login">
+    </div>
+    <div class="password">
+      <strong>Parol</strong>
+      <input type="text" name="password">
+    </div>
+    <div class="btn">
+      <button type="submit">Kirish</button>
+    </div>
+  </form>
+</section>
+
+</body>
+</html>
